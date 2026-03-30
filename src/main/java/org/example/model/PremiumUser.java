@@ -15,7 +15,7 @@ public class PremiumUser extends User{
         if(premiumAccess){
             System.out.println("Account upgrade to premium");
             System.out.println("userId: " + getUserID() + " name: " + getName() + " age: " + getAge());
-            super.accessContent();
+            super.checkAccess();
         }else {
             System.out.println("limited access: upgrade or renew sub to get premium access");
 

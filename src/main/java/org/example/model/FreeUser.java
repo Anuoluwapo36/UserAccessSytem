@@ -45,11 +45,14 @@ public class FreeUser extends User{
 
     @Override
     public void accessContent() {
+
         updateStatus();
+
         if (getStatus() == SubscriptionStatus.TRIAL) {
-            super.accessContent();
+            checkAccess();
             remainingTrial--;
         } else if (getStatus() == SubscriptionStatus.ACTIVE) {
+            System.out.println("Accessing free trail content for user: " + getName());
             System.out.println("Free trial finished: please upgrade to premium to continue");
             User upgrade = upgradePremium();
 
@@ -57,7 +60,7 @@ public class FreeUser extends User{
                upgrade.accessContent();
            }
         } else {
-            super.accessContent();
+            System.out.println("Unknown status, check account settings");
         }
 
 

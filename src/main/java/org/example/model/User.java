@@ -2,7 +2,7 @@ package org.example.model;
 
 
 
-public class  User {
+public abstract class  User {
     private String name;
     private int age;
     private long userID;
@@ -56,21 +56,24 @@ public class  User {
         this.isLocked = isLocked;
     }
 
-    public void accessContent(){
-
-         if(isLocked()) {
-             System.out.println("account locked unable to access content");
-             return;
-         }
-
-         switch (status){
-             case EXPIRED , NONE -> System.out.println("Account expired: please upgrade");
-             default -> System.out.println("Accessing content");
-         }
+    public abstract void accessContent();
 
 
 
 
+
+
+
+    public  void  checkAccess(){
+        if(isLocked()) {
+            System.out.println("account locked unable to access content");
+            return;
+        }
+
+        switch (status) {
+            case EXPIRED, NONE -> System.out.println("Account expired: please upgrade");
+            default -> System.out.println("Accessing content");
+        }
     }
 
 
